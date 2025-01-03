@@ -131,5 +131,3 @@ Special thanks to the contributors and the Django community for their support.
 - **GitHub Repository**: [Django Cardiovascular Software](https://github.com/meshtirop1/django-cardiovascular-software)
 
 ---
-
-Let me know if you'd like to modify this further! Replace the email address if it's incorrect.
