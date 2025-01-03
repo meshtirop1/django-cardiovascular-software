@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Upload Success{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1>Dataset Uploaded Successfully</h1>
+    <p>Name: {{ dataset.name }}</p>
+    <p>Uploaded At: {{ dataset.uploaded_at }}</p>
+    <a href="{% url 'visualize_data' %}" class="btn btn-primary mt-3">Visualize Data</a>
+</div>
+{% endblock %}

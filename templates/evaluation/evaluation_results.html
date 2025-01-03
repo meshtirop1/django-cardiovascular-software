@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Evaluation Results{% endblock %}
+{% block content %}
+<h1>Model Evaluation Results</h1>
+<p>Accuracy: {{ accuracy|floatformat:2 }}%</p>
+<h3>Classification Report:</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+            <th>Support</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for label, metrics in report.items %}
+            {% if label != 'accuracy' %}
+                <tr>
+                    <td>{{ label }}</td>
+                    <td>{{ metrics.precision|floatformat:2 }}</td>
+                    <td>{{ metrics.recall|floatformat:2 }}</td>
+                    <td>{{ metrics.f1_score|floatformat:2 }}</td>
+                    <td>{{ metrics.support }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Confusion Matrix:</h3>
+<img src="data:image/png;base64,{{ confusion_matrix_image }}" alt="Confusion Matrix" class="img-fluid">
+{% endblock %}

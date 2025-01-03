@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to the Cardiovascular Disease Predictor</h1>
+    <p>Upload datasets, train models, evaluate performance, and make predictions.</p>
+    <a href="{% url 'upload_dataset' %}" class="btn btn-primary">Get Started</a>
+</div>
+{% endblock %}

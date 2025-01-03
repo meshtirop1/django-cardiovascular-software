@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Training Results{% endblock %}
+{% block content %}
+<h1>Model Training Results</h1>
+<h3>Dataset: {{ dataset.name }}</h3>
+<p>Accuracy: {{ accuracy|floatformat:2 }}%</p>
+<h3>Classification Report:</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+            <th>Support</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for label, metrics in report.items %}
+            {% if label != 'accuracy' %}
+                <tr>
+                    <td>{{ label }}</td>
+                    <td>{{ metrics.precision|floatformat:2 }}</td>
+                    <td>{{ metrics.recall|floatformat:2 }}</td>
+                    {% with metrics.f1_score as f1 %}
+                        <td>{{ f1|floatformat:2 }}</td>
+                    {% endwith %}
+                    <td>{{ metrics.support }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

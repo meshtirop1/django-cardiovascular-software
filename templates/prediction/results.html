@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Prediction Results{% endblock %}
+{% block content %}
+<h1>Prediction Results</h1>
+<div class="alert alert-success">
+    <h3>Predicted Disease: {{ prediction }}</h3>
+</div>
+<h3>Confidence Scores:</h3>
+<ul class="list-group">
+    {% for prob in prediction_prob %}
+        <li class="list-group-item">Class {{ forloop.counter }}: {{ prob|floatformat:2 }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'make_prediction' %}" class="btn btn-primary mt-3">Make Another Prediction</a>
+{% endblock %}
